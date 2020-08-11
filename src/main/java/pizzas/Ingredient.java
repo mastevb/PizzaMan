@@ -12,7 +12,7 @@ public class Ingredient {
     private final Type type;
 
     public enum Type {
-        BREAD, PROTEIN, BEGGIES, CHEESE, SAUCE
+        CRUST, PROTEIN, VEGGIES, CHEESE, SAUCE
     }
 
 }
