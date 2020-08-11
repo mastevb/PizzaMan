@@ -3,6 +3,7 @@ package pizzas.web;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pizzas.*;
 import pizzas.Ingredient.Type;
 
+import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -52,7 +54,10 @@ public class DesignTacoController {
     }
 
     @PostMapping
-    public String processDesign(Pizza design) {
+    public String processDesign(@Valid Pizza design, Errors errors) {
+        if (errors.hasErrors()) {
+            return "design";
+        }
         // Save the design
         // TODO: Implement saving the design
         log.info("Processing design: " + design);
